@@ -37,28 +37,26 @@ public class CnLogUtils {
 //            Log.v(TAG, msg);
 //    }
 
-    // 下面是传入自定义tag的函数
-    public static void i(String methodName, String msg) {
+    static void i(String methodName, String msg) {
         if (isDebug)
             Log.i(TAG, canvs(methodName, msg));
     }
 
-    public static void d(String methodName, String msg) {
+    static void d(String methodName, String msg) {
         if (isDebug)
             Log.d(TAG, canvs(methodName, msg));
     }
 
-    public static void e(String methodName, String msg) {
+    static void e(String methodName, String msg) {
         if (isDebug)
             Log.e(TAG, canvs(methodName, msg));
     }
 
-    public static String canvs(String name, String msg) {
-        String a = "|||||\n";
-        String b = "|----------------------------------------------------------------------------------------------------|\n|";
-        String c = "\n|----------------------------------------------------------------------------------------------------|\n|";
-        String d = "\n|----------------------------------------------------------------------------------------------------|";
-        String last = a + b + "--------->" + name + c + "--------->" + msg + d;
+    private static String canvs(String name, String msg) {
+        String b = "start\n|————————————————————————————————————————————————————————————————————————————————————————————————————|\n|";
+        String c = "\n|————————————————————————————————————————————————————————————————————————————————————————————————————|\n|";
+        String d = "\n|————————————————————————————————————————————————————————————————————————————————————————————————————|\nend";
+        String last = b + "--------->" + name + c + "--------->" + msg + d;
         return last;
     }
 

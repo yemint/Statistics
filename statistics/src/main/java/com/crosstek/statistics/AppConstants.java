@@ -11,6 +11,7 @@ public class AppConstants {
 
     public static boolean isDebug = false;//调试
 
-    public static final String UPDATA_URL="http://hlzw.mobi/index.php/Api/App/index";
+
+    public static final String UPDATA_URL="http://182.148.109.178/index.php/Api/AppStatistic/apphits";
     public static final String IP_URL="http://ip-api.com/json/";
 }

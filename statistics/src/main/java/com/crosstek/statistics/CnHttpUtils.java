@@ -25,7 +25,6 @@ public class CnHttpUtils {
     public static final int TIMEOUT = 30;
     private static OkHttpClient okHttpClient;
 
-
     public static Handler ler = new Handler();
 
     private CnHttpUtils() {
@@ -121,12 +120,11 @@ public class CnHttpUtils {
      * @param url
      * @param map
      * @param callback
-     * @param cls      json实体类
      */
     public void post(String url, Map<String, Object> map, final CallBacks callback) {
         FormBody.Builder builder = new FormBody.Builder();
         for (Map.Entry<String, Object> entry : map.entrySet()) {
-            builder.add(entry.getKey(), entry.getValue()+"");
+            builder.add(entry.getKey(), entry.getValue() + "");
         }
         FormBody formBody = builder.build();
         Request request = new Request.Builder()
@@ -149,7 +147,6 @@ public class CnHttpUtils {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String result = response.body().string();
-//                final Object bean = CnJsonUtils.fromJson(result, cls);
                 ler.post(new Runnable() {
                     @Override
                     public void run() {
