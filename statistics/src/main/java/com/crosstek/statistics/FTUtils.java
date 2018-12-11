@@ -49,7 +49,6 @@ public class FTUtils {
             map.put("latitude", 0);
         }
         CnLogUtils.i(TAG, "初始化成功...");
-
         if ((boolean) CnSPUtils.get(context, AppConstants.SP_VALUE, false)) {
             FTUtils.runError();
             CnSPUtils.remove(context, AppConstants.SP_VALUE);
@@ -102,7 +101,7 @@ public class FTUtils {
         END_TIME = System.currentTimeMillis();
         long time = END_TIME - START_TIME;
 
-        String data = CnDeviceUtils.formatDuration(time);//有格式的时间
+//        String data = CnDeviceUtils.formatDuration(time);//有格式的时间
 
         map.put("startTime", time);
 
@@ -139,17 +138,15 @@ public class FTUtils {
      * @param permissions
      * @return
      */
-    public static boolean checkPermission(Activity activity, String[] permissions) {
+    public static boolean checkPermission(Activity activity, String permissions, int requestCode) {
         boolean isHasPer = true;
 
-        for (int i = 0; i < permissions.length; ++i) {
-            if (ActivityCompat.checkSelfPermission(activity, permissions[i]) != 0) {
-                isHasPer = false;
-            }
+        if (ActivityCompat.checkSelfPermission(activity, permissions) != 0) {
+            isHasPer = false;
         }
 
         if (!isHasPer) {
-            ActivityCompat.requestPermissions(activity, permissions, AppConstants.REQUEST_TAKE_PERMISSION);
+            ActivityCompat.requestPermissions(activity, new String[]{permissions}, requestCode);
         }
 
         return isHasPer;
